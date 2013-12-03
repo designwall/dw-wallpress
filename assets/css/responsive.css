@@ -1,0 +1,473 @@
+/* The Extra wide layout has minimum width = 1586 and maximum = 1900 pixel ---*/
+@media only screen and (min-width: 1566px) {
+	.item {
+		width: 16.6%; /* 6 cols */
+	}
+
+	.grid-double {
+		width: 33.2%;
+	}
+
+	.grid-triple {
+		width: 49.8%;
+	}
+
+}
+
+/* The HD layout has minimum width = 1901 pixel ---*/
+@media only screen and (min-width:1901px) {
+	.item {
+	 	width: 14.2%; /* 7 cols */
+	}
+
+	.grid-double {
+		width: 28.4%;
+	}
+
+	.grid-triple {
+		width: 42.6%;
+	}
+}
+
+
+/* The wide layout has minimum width = 1236 and maximum = 1585 pixel */
+@media only screen and (max-width: 1565px) {
+	.item {
+		width: 20%; /* 5 cols */
+	}
+
+	/* Large ----*/
+	.grid-double {
+	  width: 50%;
+	}
+
+	/* X-Large ----*/
+	.grid-triple {
+	  width: 75%;
+	}
+}
+
+/* The Normal layout has minimum width = 986 and maximum = 1235 pixel ---*/
+@media only screen and (max-width: 1235px) {
+	.item {
+		width: 25%; /* 4 cols */
+	}
+
+	.grid-double {
+		width: 50%;
+	}
+
+	.grid-triple {
+		width: 75%;
+	}
+}
+
+/* Responsive Content Layout ---*/
+@media only screen and (max-width: 1024px) {
+	#content {
+		max-width: 100%;
+	}
+
+	#sidebar-secondary {
+		width: 100%;
+	}
+
+	#sidebar-secondary .item {
+		width: 33.33%;
+	}
+}
+
+@media only screen and (min-width: 986px) { 
+	#header #navigation {
+		display: block !important;
+	}
+}
+
+/* The tablet layout has minimum width = 720 and maximum = 985 pixel ---*/
+@media only screen and (max-width: 985px) {
+	#main {
+		padding: 50px 10px 10px;
+	}
+	
+	/* Header ---*/
+	#header {
+		height: auto;
+	}
+
+	#header #header-inner {
+		position: relative;
+		max-width: 100%;
+	}
+	
+	#header #branding {
+		width: 100%;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: 	border-box;
+		-ms-box-sizing: 	border-box;
+		box-sizing: 		border-box;
+	}
+	
+	#header #branding h1 {
+		margin: 0 auto;
+	}
+
+	#header #branding a.logo_title {
+		overflow: visible;
+	}
+	
+	#header .sidebar-control,
+	#header .navigation-control {
+		display: block;
+		float: left;
+		position: absolute;
+		top: 0;
+		width: 40px;
+		height: 40px;
+		border: 1px solid #252525;
+		border-width: 0 1px 0 0;
+		text-indent: -9999px;
+		background: url(../images/icon-sidebar.png) no-repeat center;
+	}
+	
+	#header .navigation-control {
+		right: 0;
+		border-width: 0 0 0 1px;
+		background-image: url(../images/icon-navigation.gif);
+	}
+	
+	.page-template-layout-fixed-width-php #header .sidebar-control,
+	.page-template-layout-fluid-width-php #header .sidebar-control,
+	.page-template-layout-content-sidebar-php #header .sidebar-control {
+		display: none;
+	}
+	
+	#header #searchform {
+		display: none;
+	}
+	
+	/* Navigation ---*/
+	#header #navigation {
+		width: 100%;
+		display: none;
+	}
+
+	#header #navigation li {
+		float: none;
+	}
+
+	#header #navigation li:first-child a {
+		border-left: none;
+	}
+
+	#header #navigation li a {
+		border-right: none;
+		border-top: 1px solid #252525;
+	}
+
+	#header #navigation li.parent > a {
+		background-image: none;
+	}
+
+	#header #navigation li .ico-collapse {
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 40px;
+		height: 40px;
+		padding: 0;
+		border: none;
+		text-indent: -9999px;
+		background: url(../images/arrow-down.png) center no-repeat !important;
+	}
+
+	#header #navigation li.current-menu-item > a,
+	#header #navigation li.current-menu-ancestor > a,
+	#header #navigation li.current_page_item > a {
+		color: #fff;
+	}
+
+	#header #navigation li ul {
+		position: static;
+		left: 0;
+		display: none;
+	}
+
+	#header #navigation li li a {
+		width: 100%;
+		text-indent: 20px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+	#header #navigation li li:first-child a {
+		border-top-width: 1px;
+	}
+
+	#header #navigation li li.current-menu-ancestor > a {
+		color: #999;
+	}
+
+	#header #navigation li li ul {
+		display: block;
+	}
+
+	#header #navigation li li li a {
+		text-indent: 40px;
+	}
+
+	/* Sidebar ---*/
+	#sidebar {
+		display: none;
+	}
+	
+	body.sidebar-on #sidebar {
+		display: block;
+		z-index: 99999;
+		top: 0;
+		width: 180px;
+		border-right: 1px solid #ddd;
+		text-align: left;
+		background: #fff;
+		box-shadow: 1px 2px 2px rgba(0,0,0,0.4);
+	}
+
+	body.sidebar-on #sidebar .widget:first-child {
+		padding: 20px 0;
+	}
+
+	#sidebar .widget ul li a {
+		max-width: 145px;
+	}
+	
+	/* Item ---*/
+	.item {
+		width: 33.3%;
+	}
+
+	.grid-double {
+		width: 66.6%;
+	}
+
+	.grid-triple {
+		width: 100%;
+	}
+
+	.item .item-comments .comment-form-author input,
+	.item .item-comments .comment-form-email input,
+	.item .item-comments .comment-form-url input {
+		width: 50%;
+	}
+
+	/* Content ---*/
+	.single #content,
+	.page-template-default #content,
+	.page-template-layout-content-sidebar-php #content {
+		width: 100%;
+	}
+
+	/* Scroll-top ---*/
+	.scroll-top {
+		bottom: 20px;
+		left: 20px;
+	}
+}
+
+/* The Mobile Landscape layout has maximum width = 719 pixel ---*/
+@media only screen and (max-width:719px) {
+	/* Content --- */
+	.item-content img,
+	.post-content img {
+		width: 100%;
+		height: auto;
+	}
+
+	.item .item-comments .comment-form-author input, 
+	.item .item-comments .comment-form-email input, 
+	.item .item-comments .comment-form-url input {
+		width: 100%;
+	}
+
+	/* Sidebar Secondary ---*/
+	#sidebar-secondary .item {
+		width: 50%;
+	}
+
+	/* Blog ---*/
+
+	.jp-progress {
+		padding: 12px 80px 12px 32px
+	}
+
+	.jp-volume-bar-wrap {
+		width: 80px; 
+	}
+
+	/* WP Admin Bar ---*/
+	#wpadminbar li {
+		display: none;
+	}
+
+	#wpadminbar ul #wp-admin-bar-wp-logo,
+	#wpadminbar ul #wp-admin-bar-site-name,
+	#wpadminbar ul #wp-admin-bar-updates,
+	#wpadminbar ul #wp-admin-bar-comments,
+	#wpadminbar ul #wp-admin-bar-new-content,
+	#wpadminbar ul #wp-admin-bar-edit {
+		display: block;
+	}
+
+	/* Item ---*/
+	.item {
+		width: 50%;
+	}
+
+	.grid-double {
+		width: 100%;
+	}
+
+	.grid-triple {
+		width: 100%;
+	}
+
+	/* Contact ---*/
+	.contact-info-wrap,
+	.contact-form-wrap {
+		float: none;
+		width: 99%;
+		margin: 20px 0 !important;
+	}
+
+	.contact-info-wrap img {
+		width: 100%;
+	}
+
+	.item-content .wpcf7 img {
+		width: auto;
+	}
+
+	.wpcf7 div.wpcf7-response-output {
+		margin: 20px 0;
+	}
+}
+/* The Mobile Portrait layout has maximum width = 480 pixel ---*/
+@media only screen and ( max-width: 480px) {
+
+	#sidebar-secondary .item {
+		width: 100%;
+	}
+
+	/* Blog ---*/
+	.post-main {
+		padding: 0;
+	}
+
+	.post-title,
+	.post-meta {
+		margin: 0 0 0 60px;
+	}
+
+	/* Post format ---*/
+	.post-content {
+		margin: 20px 0 0;
+	}
+
+	.page-template-layout-blog-php .format-quote blockquote {
+		margin: -40px -21px 15px -20px;
+	}
+
+	.post.format-video iframe {
+		height: 225px;
+	}
+
+	/* Comment ---*/
+	.item .item-comments .commentlist li .children {
+		margin-left: 0 !important;
+	}
+
+	.item .item-comments .commentlist li .children #respond {
+		margin-left: 0 !important;
+	}
+
+	#comments .comment-form-author input, 
+	#comments .comment-form-email input, 
+	#comments .comment-form-url input {
+		width: 100%;
+	}
+
+	/* Page navi ---*/
+	.pagenav {
+		overflow: hidden;
+	}
+
+	.pagenav .pages {
+		display: inline-block;
+		padding: 8px 0;
+		position: absolute;
+		left: 0;
+		width: 100%;
+	}
+
+	.pagenav .page-numbers {
+		display: none;
+	}
+
+	.pagenav .page-numbers.next, 
+	.pagenav .page-numbers.prev {
+		display: block;
+		position: relative;
+		z-index: 1;
+	}
+
+	/* Item ---*/
+	.item {
+		width: 100%;
+	}
+
+	.grid-double {
+		width: 100%;
+	}
+
+	.grid-triple {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width:320px) {
+	.format-video iframe {
+		height: auto;
+	}
+
+	.post-meta.meta-top .item-date,
+	.post-meta.meta-top .cat-links, 
+	.post-meta.meta-top .comments-link {
+		width: 100%;
+	}
+
+	.post.format-video iframe {
+		height: auto;
+	}
+
+	#fancybox-title-float-wrap {
+	margin: 0 auto;
+	}
+
+	#fancybox-title {
+		text-align: center;
+		left: 0 !important;
+		height: auto !important;
+		margin-top: 20px;
+		bottom: auto;
+		background: #000;
+		border: 5px solid #fff;
+		border-radius: 5px;
+		position: static;
+	}
+
+	#fancybox-title-float-wrap td {
+		background: none;
+		white-space: normal !important;
+	}
+}

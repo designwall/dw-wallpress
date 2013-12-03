@@ -1,0 +1,40 @@
+[class*="dwqa-question"] #main {
+	padding-left: 8px;
+}
+
+[class*="dwqa-question"] #content {
+	max-width: 960px;
+}
+
+[class*="dwqa-question"] .item {
+	width: 100%;
+}
+
+[class*="dwqa-question"] .item .item-inner {
+	padding: 20px 30px;
+}
+
+[class*="dwqa-question"] .item .item-title {
+	margin-bottom: 20px;
+}
+
+[class*="dwqa-question"] .item .item-content {
+	overflow: visible;
+}
+
+[class*="dwqa-question"] .dw-question .not-found {
+	padding: 0;
+}
+
+.single-dwqa-question .dwqa-container .dwqa-sidebar a {
+	color: #555;
+}
+.single-dwqa-question .dwqa-container .dwqa-sidebar a:hover {
+	color: #2985e8;
+}
+
+@media (max-width: 480px) {
+	.dw-question .questions-wrap .archive-question-footer {
+		text-align: left;
+	}
+}
