@@ -14,7 +14,53 @@ DW Wall is the premium counterpart of DW WallPress and has simple and creative l
 == Support ==
 Please post your questions in Questions & Answers page: http://www.designwall.com/question/
 
+== License ==
+
+= 1. Theme license (PHP, CSS, JS files) =
+
+* GNU General Public License v2.0
+* http://www.gnu.org/licenses/gpl-2.0.html
+
+= 2. Icon license links =
+
+* Fontawesome (MIT License): http://fontawesome.io/
+
+* GLYPHICONS Halflings in Twitter Bootstrap: http://glyphicons.com/license/
+
+* All other images made by us, stored in assets/images/ licensed under GNU General Public License v2.0
+
+= 3. Javascript license links = 
+
+* Audio player by jPlayer (License: MIT): http://www.jplayer.org/
+	+ assets/js/jquery.jplayer.min.js
+	+ assets/swf/Jplayer.swf
+
+* iScroll by CUBIQ (License: MIT): http://cubiq.org
+	+ assets/js/iscroll.js
+
+* jCarousel by Sorgalla (License: MIT & GPL): http://sorgalla.com/jcarousel/
+	+ assets/js/jquery.jcarousel.min.js
+
+* jQuery Masonry by Desandro (License: MIT): http://masonry.desandro.com/
+	+ assets/js/jquery.masonry.min.js
+
+* jQuery Mousewheel by Brandon (License: MIT): https://github.com/brandonaaron/jquery-mousewheel
+	+ assets/js/jquery.mousewheel.js
+
 == Changelog ==
+= 1.1.3 =
+* Tweak: Restyle "scroll to top" button.
+* Fix: Delay scroll in "short code" page.
+
+= 1.1.2 =
+* Tweak: Replace image icon by icon font (http://fontawesome.io/).
+* Fix: Restyle top menu in wordpress 3.8.
+* Fix: Broken layout of Gallery post format in mobile and tablet.
+
+= 1.1.1 =
+* Fix: Change screenshort.
+* Fix: Remove stylesheets in header.php. Add stylesheets via wp_enqueue_style function.
+
 = 1.1.0 =
 * New: Add some new features to Customize section in the back-end: Font Selector, Style Selector, Custom Code.
 * New: Add “Post Settings” to the post.

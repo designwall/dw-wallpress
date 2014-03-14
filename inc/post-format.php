@@ -15,12 +15,9 @@ function wallpress_audio_player( $post_id ) {
 		<div class="jp-type-single">
 			<div class="jp-gui jp-interface">
 				<ul class="jp-controls">
-					<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
-					<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
-					<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
-					<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
-					<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
-					<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+					<li><a href="javascript:;" class="jp-play" tabindex="1"><i class="fa fa-play"></i></a></li>
+					<li><a href="javascript:;" class="jp-pause" tabindex="1"><i class="fa fa-pause"></i></a></li>
+					<li><a href="javascript:;" class="jp-stop" tabindex="1"><i class="fa fa-stop"></i></a></li>
 				</ul>
 
 				<!-- you can comment out any of the following <div>s too -->
@@ -34,6 +31,10 @@ function wallpress_audio_player( $post_id ) {
 				</div>
 
 				<div class="jp-volume-bar-wrap">
+					<ul class="jp-controls-volume">
+						<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute"><i class="fa fa-volume-off"></i></a></li>
+						<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute"><i class="fa fa-volume-up"></i></a></li>
+					</ul>
 					<div class="jp-volume-bar">
 						<div class="jp-volume-bar-value"></div>
 					</div>
@@ -98,7 +99,7 @@ function wallpress_gallery(  ) {
 		}
 		$output .=  '</div></div>';
 		$output .=  '<ul class="dw-gallery-pagination"></ul>';
-		$output .=  '<a href="#" class="dw-gallery-next"></a><a href="#" class="dw-gallery-prev"></a></div>';
+		$output .=  '<a href="#" class="dw-gallery-next"><i class="fa fa-chevron-circle-right"></i></a><a href="#" class="dw-gallery-prev"><i class="fa fa-chevron-circle-left"></i></a></div>';
 	}
 	return $output;
 }

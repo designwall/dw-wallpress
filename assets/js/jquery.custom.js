@@ -122,7 +122,7 @@ jQuery(document).ready(function($) {
 	$('#header #navigation .menu > li').each(function(){
 		if($(this).find('.sub-menu').length<1) return;
 		$(this).addClass('parent')
-		 $(this).append('<a href="#" class="ico-collapse"></a>').find('.ico-collapse').text('>')
+		 $(this).append('<a href="#" class="ico-collapse"></a>').find('.ico-collapse').html('<i class="fa fa-angle-down"></i>')
 		 	.click(function(){
 		 			if($(this).prev().is(':visible')){$(this).prev().slideToggle(); return;}
 		 			
@@ -342,28 +342,6 @@ jQuery(document).ready(function($) {
 					social_tools: false
 				});
 			}
-		} else {
-			$("a.zoom, .gallery-item a").fancybox({
-				margin : 90,
-				wrapCSS    : 'fancybox-custom',
-
-				openEffect : 'elastic',
-				openSpeed  : 300,
-
-				closeEffect : 'elastic',
-				closeSpeed  : 300,
-
-				helpers : {
-					title : {
-						type : 'inside'
-					},
-					overlay : {
-						css : {
-							'background' : 'rgba(0,0,0,0.7)',
-						}
-					}
-				}
-			});
 		}
 	}
 
@@ -426,7 +404,7 @@ jQuery(document).ready(function($) {
 	 * Transform list item to gallery format
 	 * @return {null}
 	 */
-	var wallpress_gallery = function (selector) {
+	function wallpress_gallery(selector) {
 
 		gallery_update_width(selector);
 
@@ -464,8 +442,10 @@ jQuery(document).ready(function($) {
 		} else {
 			if( $( selector ).closest('.masonry-brick').hasClass('grid-double') && container_w > 460 ){
 				base_cw *= 2;
-			} else if( $( selector ).closest('.masonry-brick').hasClass('grid-triple') && container_w > 460 ){
+			} else if( $( selector ).closest('.masonry-brick').hasClass('grid-triple') && container_w > 682 ){
 				base_cw *= 3;
+			}else if( $( selector ).closest('.masonry-brick').hasClass('grid-triple') && container_w > 460 ){
+				base_cw *= 2;
 			} 
 			cw =  base_cw - wallpress_getCoverHorizon( selector.parent() );
 		}
@@ -480,7 +460,7 @@ jQuery(document).ready(function($) {
 	function reload_gallery(){
 		/** Find all gallery post format and apply gallery style */
 		$('.dw-gallery-container').each(function(){
-			gallery_update_width($(this));
+			wallpress_gallery($(this));
 		});
 	}
 
@@ -555,6 +535,11 @@ jQuery(document).ready(function($) {
 		$('.masonry').css({'min-height':( $(window).height() + 1) + 'px' });
 	}
 	$(window).trigger('resize');
+
+	// Header search
+	$('#header #searchform').click(function(){
+		$(this).find('#s').focus();
+	});
 
 });
 

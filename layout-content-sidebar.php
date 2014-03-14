@@ -1,4 +1,9 @@
-<?php get_header(); ?>
+<?php
+/*
+Template Name: Content Sidebar
+*/
+
+get_header(); ?>
 
 	<div id="container" class="clearfix">			
 		

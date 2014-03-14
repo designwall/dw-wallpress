@@ -1,4 +1,9 @@
-<?php get_header(); ?>
+<?php
+/*
+Template Name: Shop
+*/ 
+
+get_header(); ?>
 	<?php get_sidebar('shop'); ?>
 
 	<div id="container" class="clearfix">

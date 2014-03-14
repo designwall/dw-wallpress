@@ -78,17 +78,24 @@ endif;
 /*-----------------------------------------------------------------------------------*/
 if ( !function_exists( 'wallpress_script_method' ) ) :
 function wallpress_script_method() {
+	wp_enqueue_style( 'wallpress_style_main', get_template_directory_uri().'/assets/css/template.css' );
+	wp_enqueue_style( 'wallpress_style_responsive', get_template_directory_uri().'/assets/css/responsive.css' );
+	wp_enqueue_style( 'wallpress_style_font_awesome', get_template_directory_uri().'/inc/font-awesome/css/font-awesome.min.css' );
+
+	if ( function_exists('jigoshop_init') ) {
+		wp_enqueue_style( 'wallpress_style_jigoshop', get_template_directory_uri().'/jigoshop/style.css' );
+	}
+
+	wp_enqueue_style( 'wallpress_style', get_stylesheet_uri() );
+
 	wp_enqueue_script('jquery');
 	wp_enqueue_script( 'wallpress_jquery_masonry', get_template_directory_uri().'/assets/js/jquery.masonry.min.js', array( 'jquery' ) );
 	wp_enqueue_script( 'wallpress_jquery_infinite', get_template_directory_uri().'/assets/js/jquery.infinitescroll.min.js', array( 'jquery' ) );
-		wp_enqueue_script( 'wallpress_jquery_custom', get_template_directory_uri().'/assets/js/jquery.custom.js', array( 'jquery' ) );
+	wp_enqueue_script( 'wallpress_jquery_custom', get_template_directory_uri().'/assets/js/jquery.custom.js', array( 'jquery' ) );
 	wp_enqueue_script( 'wallpress_jquery_jcarousel', get_template_directory_uri().'/assets/js/jquery.jcarousel.min.js', array( 'jquery' ) );
 	wp_enqueue_script( 'wallpress_jquery_jplayer', get_template_directory_uri().'/assets/js/jquery.jplayer.min.js', array( 'jquery' ) );
 	wp_enqueue_script( 'wallpress_jquery_iscroll', get_template_directory_uri().'/assets/js/iscroll.js', array( 'jquery' ) );
 	wp_enqueue_script( 'wallpress_jquery_wheel', get_template_directory_uri().'/assets/js/jquery.mousewheel.js', array( 'jquery' ) );
-	if ( ! class_exists(jigoshop) ) {
-		wp_enqueue_script( 'wallpress_jquery_fancybox', get_template_directory_uri().'/assets/js/jquery.fancybox.pack.js', array( 'jquery' ) );
-	}
 	if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' );
 }
 add_action( 'wp_enqueue_scripts', 'wallpress_script_method' );
@@ -251,11 +258,11 @@ endif;
 /*-----------------------------------------------------------------------------------*/
 /*	Toolbar in header
 /*-----------------------------------------------------------------------------------*/
-add_action( 'after-navigation' , 'wallpress_toobar' );
+add_action( 'dw-wallpress-after-navigation' , 'wallpress_toobar' );
 if ( ! function_exists( 'wallpress_toobar' ) ) :
 function wallpress_toobar() { ?>
-	<a href="javascript:void(0);" class="sidebar-control"><?php _e( 'Collabse sidebar', 'dw-wallpress' ); ?></a>
-	<a href="javascript:void(0);" class="navigation-control"><?php _e( 'Collabse navigation', 'dw-wallpress' ); ?></a>
+	<a href="javascript:void(0);" class="sidebar-control"><i class="fa fa-columns"></i></a>
+	<a href="javascript:void(0);" class="navigation-control"><i class="fa fa-bars"></i></a>
 	<?php get_search_form(); ?>
 <?php }
 endif;
@@ -281,8 +288,8 @@ function wallpress_pagenavi( $the_query ) {
 	
 	$a['mid_size'] = 5; //how many links to show on the left and right of the current
 	$a['end_size'] = 1; //how many links to show in the beginning and end
-	$a['prev_text'] = '&laquo; Previous'; //text of the "Previous page" link
-	$a['next_text'] = 'Next &raquo;'; //text of the "Next page" link
+	$a['prev_text'] = '<i class="fa fa-chevron-left"></i>'; //text of the "Previous page" link
+	$a['next_text'] = '<i class="fa fa-chevron-right"></i>'; //text of the "Next page" link
 
 	if ( $max > 1 ){
 		echo '<div class="pagenav">';
@@ -299,58 +306,59 @@ endif;
 if ( ! function_exists( 'wallpress_meta_box' ) ) {
 
 	function wallpress_meta_box() {
-		$screens = array( 'post');
+        add_meta_box(
+            'wallpress_post_setting',
+            __( 'Post Settings', 'dw-wallpress' ),
+            'wallpress_post_setting_callback',
+            'post',
+            'side',
+            'high'
+        );
 
-	    foreach ( $screens as $screen ) {
-	        add_meta_box(
-	            'wallpress_post_setting',
-	            __( 'Post Settings', 'dw-wallpress' ),
-	            'wallpress_post_setting_callback',
-	            $screen,
-	            'side',
-	            'default'
-	        );
-	    }
+	    add_meta_box(
+            'wallpress_blog_setting',
+            __( 'Blog Settings', 'dw-wallpress' ),
+            'wallpress_blog_setting_callback',
+            'page',
+            'side',
+            'high'
+        );
 	}
 	add_action( 'add_meta_boxes', 'wallpress_meta_box' );
 
 	if ( ! function_exists( 'wallpress_post_setting_callback' )) {
-
 		function wallpress_post_setting_callback( $post ) {
-			// Add an nonce field so we can check for it later.
+			wp_nonce_field( 'wallpress_post_setting_callback', 'wallpress_post_setting_callback_nonce' );
+
 	  		$grid_value = get_post_meta( $post->ID, 'grid', true );
 	  		$ribbon_value = get_post_meta( $post->ID, 'ribbon', true );
 	  		?>
 	  		
-			<table>
+			<table width="100%">
 				<tr>
 					<td>
 						<?php _e('<strong>Select Grid</strong>','dw-wallpress') ?>
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td width="33%">
 						<label>
 							<input type="radio" name="wallpress_post_grid_setting" value="single" checked="checked">
 							<span><?php _e('Normal','dw-wallpress') ?></span>
 						</label>
 					</td>
-				</tr>
 
-				<tr>
-					<td>
+					<td width="33%">
 						<label>
 							<input type="radio" name="wallpress_post_grid_setting" value="double" <?php if ($grid_value == 'double') echo 'checked="checked"'  ?> >
-							<span><?php _e('Large','dw-wallpress') ?></span>
+							<span><?php _e('Double','dw-wallpress') ?></span>
 						</label>
 					</td>
-				</tr>
 
-				<tr>
-					<td>
+					<td width="33%">
 						<label>
 							<input type="radio" name="wallpress_post_grid_setting" value="triple" <?php if ($grid_value == 'triple') echo 'checked="checked"' ?> >
-							<span><?php _e('Extra Large','dw-wallpress') ?></span>
+							<span><?php _e('Triple','dw-wallpress') ?></span>
 						</label>
 					</td>
 				</tr>
@@ -364,10 +372,24 @@ if ( ! function_exists( 'wallpress_meta_box' ) ) {
 				</tr>
 
 				<tr>
-					<td>
+					<td width="33%">
 						<label>
-							<input type="checkbox" name="wallpress_post_ribbon_setting" value="hot" <?php if ($ribbon_value == 'hot') echo 'checked="checked"' ?>>
+							<input type="radio" name="wallpress_post_ribbon_setting" value="" <?php if ($ribbon_value == '') echo 'checked="checked"' ?>>
+							<span><?php _e('None','dw-wallpress') ?></span>
+						</label>
+					</td>
+
+					<td width="33%">
+						<label>
+							<input type="radio" name="wallpress_post_ribbon_setting" value="hot" <?php if ($ribbon_value == 'hot') echo 'checked="checked"' ?>>
 							<span><?php _e('Hot','dw-wallpress') ?></span>
+						</label>
+					</td>
+
+					<td width="33%">
+						<label>
+							<input type="radio" name="wallpress_post_ribbon_setting" value="featured" <?php if ($ribbon_value == 'featured') echo 'checked="checked"' ?>>
+							<span><?php _e('Featured','dw-wallpress') ?></span>
 						</label>
 					</td>
 				</tr>
@@ -377,23 +399,25 @@ if ( ! function_exists( 'wallpress_meta_box' ) ) {
 	}
 
 	if ( ! function_exists( 'wallpress_post_setting_save_postdata' )) {
-		
-	
 		function wallpress_post_setting_save_postdata( $post_id ) {
+			// Check if our nonce is set.
+			if ( ! isset( $_POST['wallpress_post_setting_callback_nonce'] ) )
+			return $post_id;
+
+			$nonce = $_POST['wallpress_post_setting_callback_nonce'];
+
+			// Verify that the nonce is valid.
+			if ( ! wp_verify_nonce( $nonce, 'wallpress_post_setting_callback' ) )
+			return $post_id;
 
 			// If this is an autosave, our form has not been submitted, so we don't want to do anything.
 			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
 			return $post_id;
 
-			 // Check the user's permissions.
+			// Check the user's permissions.
 			if ( 'page' == $_POST['post_type'] ) {
 
 			if ( ! current_user_can( 'edit_page', $post_id ) )
-				return $post_id;
-
-			} else {
-
-			if ( ! current_user_can( 'edit_post', $post_id ) )
 				return $post_id;
 			}
 
@@ -401,13 +425,103 @@ if ( ! function_exists( 'wallpress_meta_box' ) ) {
 
 			// Grid
 			$wallclassic_post_grid_setting_data = $_POST['wallpress_post_grid_setting'];
-			update_post_meta( $post_id, 'grid', $wallclassic_post_grid_setting_data );
+			if ( $wallclassic_post_grid_setting_data ) {
+				update_post_meta( $post_id, 'grid', $wallclassic_post_grid_setting_data );	
+			}
 
 			// Ribbon
 			$wallclassic_post_ribbon_data =  $_POST['wallpress_post_ribbon_setting'];
-			update_post_meta( $post_id, 'ribbon', $wallclassic_post_ribbon_data );
+			if ( $wallclassic_post_ribbon_data ) {
+				update_post_meta( $post_id, 'ribbon', $wallclassic_post_ribbon_data );
+			}
 		}
 		add_action( 'save_post', 'wallpress_post_setting_save_postdata' );
+	}
+
+	if ( ! function_exists( 'wallpress_blog_setting_callback' )) {
+		function wallpress_blog_setting_callback( $post ) {
+			wp_nonce_field( 'wallpress_blog_setting_callback', 'wallpress_blog_setting_callback_nonce' );
+			
+	  		$query_args = get_post_meta( $post->ID, 'query_args', true );
+	  		$posts_per_page = get_post_meta( $post->ID, 'posts_per_page', true );
+  			$posts_per_page = (empty($posts_per_page))?5:$posts_per_page;
+	  		?>
+	  		
+			<table width="100%">
+				<tr>
+					<td width="100%">
+						<label for="wallpress_blog_cat_setting"><?php _e('<strong>Get post from category:</strong>','dw-wallpress') ?></label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php 
+						$args = array(
+							'id' => 'wallpress_blog_cat_setting',
+							'name' => 'wallpress_blog_cat_setting',
+							'selected' => $query_args
+						);
+						wp_dropdown_categories($args);
+						?>
+					</td>
+				</tr>
+		
+				<tr><td height="10"></td></tr>
+
+				<tr>
+					<td width="100%">
+						<label for="wallpress_blog_number_setting"><?php _e('<strong>Posts per page:</strong>','dw-wallpress') ?></label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input id="wallpress_blog_number_setting" name="wallpress_blog_number_setting" type="text" value="<?php echo $posts_per_page; ?>">
+					</td>
+				</tr>
+		
+			</table>
+	  		<?php
+		}
+	}
+
+	if ( ! function_exists( 'wallpress_blog_setting_save_postdata' )) {
+		function wallpress_blog_setting_save_postdata( $post_id ) {
+			// Check if our nonce is set.
+			if ( ! isset( $_POST['wallpress_blog_setting_callback_nonce'] ) )
+			return $post_id;
+
+			$nonce = $_POST['wallpress_blog_setting_callback_nonce'];
+
+			// Verify that the nonce is valid.
+			if ( ! wp_verify_nonce( $nonce, 'wallpress_blog_setting_callback' ) )
+			return $post_id;
+
+			// If this is an autosave, our form has not been submitted, so we don't want to do anything.
+			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
+			return $post_id;
+
+			// Check the user's permissions.
+			if ( 'page' == $_POST['post_type'] ) {
+
+			if ( ! current_user_can( 'edit_page', $post_id ) )
+				return $post_id;
+			}
+
+			/* OK, its safe for us to save the data now. */
+
+			// Grid
+			$query_args = $_POST['wallpress_blog_cat_setting'];
+			if ( $query_args ) {
+				update_post_meta( $post_id, 'query_args', $query_args );	
+			}
+
+			// Ribbon
+			$posts_per_page =  $_POST['wallpress_blog_number_setting'];
+			if ( $posts_per_page ) {
+				update_post_meta( $post_id, 'posts_per_page', $posts_per_page );
+			}
+		}
+		add_action( 'save_post', 'wallpress_blog_setting_save_postdata' );
 	}
 }
 
@@ -591,7 +705,11 @@ function alx_plugins() {
 		array(
 			'name' 				=> 'Jigoshop',
 			'slug' 				=> 'jigoshop',
-		)
+		),
+		array(
+			'name' 				=> 'WP Lightbox 2',
+			'slug' 				=> 'wp-lightbox-2',
+		),
 	);	
 	tgmpa( $plugins );
 }

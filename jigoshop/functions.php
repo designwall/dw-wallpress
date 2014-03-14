@@ -92,7 +92,7 @@ endif;
 /*-----------------------------------------------------------------------------------*/
 /*	Jigoshop Minicart Widget
 /*-----------------------------------------------------------------------------------*/
-add_action( 'after-navigation' , 'wallpress_jigo_minicart', 20 );
+add_action( 'dw-wallpress-after-navigation' , 'wallpress_jigo_minicart', 20 );
 if ( ! function_exists( 'wallpress_jigo_minicart' ) ) :
 function wallpress_jigo_minicart() { ?>
 <div id="jigo_minicart">

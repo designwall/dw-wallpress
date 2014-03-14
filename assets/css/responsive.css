@@ -125,14 +125,15 @@
 		height: 40px;
 		border: 1px solid #252525;
 		border-width: 0 1px 0 0;
-		text-indent: -9999px;
-		background: url(../images/icon-sidebar.png) no-repeat center;
+		color: #fff;
+		text-align: center;
+		line-height: 40px;
+		font-size: 14px;
 	}
 	
 	#header .navigation-control {
 		right: 0;
 		border-width: 0 0 0 1px;
-		background-image: url(../images/icon-navigation.gif);
 	}
 	
 	.page-template-layout-fixed-width-php #header .sidebar-control,
@@ -164,10 +165,6 @@
 		border-top: 1px solid #252525;
 	}
 
-	#header #navigation li.parent > a {
-		background-image: none;
-	}
-
 	#header #navigation li .ico-collapse {
 		display: block;
 		position: absolute;
@@ -176,9 +173,12 @@
 		width: 40px;
 		height: 40px;
 		padding: 0;
-		border: none;
-		text-indent: -9999px;
-		background: url(../images/arrow-down.png) center no-repeat !important;
+		font-size: 20px;
+		text-align: center;
+	}
+
+	#header #navigation li.hilite > .ico-collapse:after {
+		display: none;
 	}
 
 	#header #navigation li.current-menu-item > a,
@@ -352,6 +352,13 @@
 		margin: 20px 0;
 	}
 }
+
+@media only screen and ( max-width: 600px) {
+	#wpadminbar {
+		position: fixed;
+	}
+}
+
 /* The Mobile Portrait layout has maximum width = 480 pixel ---*/
 @media only screen and ( max-width: 480px) {
 

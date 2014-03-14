@@ -1,10 +1,21 @@
-<?php get_header(); ?>
+<?php
+/*
+Template Name: Blog
+*/
+
+get_header(); ?>
 	<div id="container" class="clearfix">
 
 		<div id="content">
 		<?php
 		$query_args = get_post_meta($post->ID, 'query_args', true);
+		$posts_per_page = get_post_meta( $post->ID, 'posts_per_page', true );
+  			
+		$posts_per_page = (empty($posts_per_page))?5:$posts_per_page;
+
+		$query_args = 'cat='.$query_args.'&posts_per_page='.$posts_per_page;
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+		
 		$the_query = new WP_Query( $query_args .'&paged=' . $paged ); ?>
 
 		<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>

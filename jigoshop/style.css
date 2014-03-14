@@ -1114,6 +1114,7 @@ p.stars span a.star-5 {
 #sidebar-secondary .jigoshop_product_categories ul li {
 	border-top: 1px solid #e5e5e5;
 	line-height: 30px;
+	text-align: right;
 }
 
 #sidebar-secondary .jigoshop_product_categories ul li:first-child {
@@ -1121,21 +1122,32 @@ p.stars span a.star-5 {
 }
 
 #sidebar-secondary .jigoshop_product_categories ul a {
+	float: left;
 	display: block;
 	overflow: hidden;
 	text-indent: 20px;
 	white-space: nowrap;
-	background: url(../assets/images/arrow-right-mini.png) no-repeat left 11px;
 	text-overflow: ellipsis;
-	-webkit-transition: background-position 0.3s;
-	-moz-transition: 	background-position 0.3s;
-	-o-transition: 		background-position 0.3s;
-	-ms-transition: 	background-position 0.3s;
-	transition: 		background-position 0.3s;	
+	position: relative;
 }
 
-#sidebar-secondary .jigoshop_product_categories ul a:hover {
-	background-position: 10px 11px;
+#sidebar-secondary .jigoshop_product_categories ul a:before {
+	content: '\f105';
+	font-family: FontAwesome;
+	color: #ddd;
+	font-size: 20px;
+	left: -20px;
+	position: absolute;
+	text-decoration: none !important;
+	-webkit-transition: left 0.3s;
+	-moz-transition: 	left 0.3s;
+	-o-transition: 		left 0.3s;
+	-ms-transition: 	left 0.3s;
+	transition: 		left 0.3s;
+}
+
+#sidebar-secondary .jigoshop_product_categories ul a:hover:before {
+	left: -10px;
 }
 
 /* Widget cart ---*/
@@ -1330,17 +1342,31 @@ p.stars span a.star-5 {
 }
 
 #sidebar-secondary .widget_user_login ul a {
+	position: relative;
 	display: block;
 	overflow: hidden;
 	text-indent: 20px;
 	white-space: nowrap;
-	background: url(../assets/images/arrow-right-mini.png) no-repeat left 11px;
 	text-overflow: ellipsis;
-	-webkit-transition: background-position 0.3s;
-	-moz-transition: 	background-position 0.3s;
-	-o-transition: 		background-position 0.3s;
-	-ms-transition: 	background-position 0.3s;
-	transition: 		background-position 0.3s;	
+}
+
+#sidebar-secondary .widget_user_login ul a:before {
+	content: '\f105';
+	font-family: FontAwesome;
+	color: #ddd;
+	font-size: 20px;
+	left: -20px;
+	position: absolute;
+	text-decoration: none !important;
+	-webkit-transition: left 0.3s;
+	-moz-transition: 	left 0.3s;
+	-o-transition: 		left 0.3s;
+	-ms-transition: 	left 0.3s;
+	transition: 		left 0.3s;
+}
+
+#sidebar-secondary .widget_user_login ul a:hover:before {
+	left: -10px;
 }
 
 #sidebar-secondary .widget_user_login ul a:hover {
@@ -1559,23 +1585,20 @@ p.stars span a.star-5 {
 .jigoshop_error,
 .jigoshop.page .item-content > p:first-child {
 	margin: 10px;
-	background: #effcd5 url(../assets/images/icon-check.png) no-repeat 15px 16px;
 	color: #5b7a1c;
-	padding: 9px 19px 9px 40px;
+	padding: 9px 19px 9px 19px;
 	min-height: 30px;
 	line-height: 30px;
 	border: 1px solid #cee5a1;
 }
 
 .jigoshop_error {
-	background-image: url(../assets/images/icon-alert.png);
 	background-color: #ffecec;
 	border-color: #ffbcbc;
 	color: #ef2a33;
 }
 
 .jigoshop.page .item-content > p:first-child {
-	background-image: url(../assets/images/icon-info.png);
 	background-color: #e2f0ff;
 	border-color: #a2cfff;
 	color: #2985e8 !important;

@@ -3,18 +3,18 @@
 // Customize variable
 // -----------------------------------------------------------------------------------
 global $dw_current_theme, $dw_colors;
-$dw_current_theme = get_current_theme();
+$dw_current_theme = wp_get_theme();
 $dw_colors = array('#2985e8','#ef4135', '#7cc576', '#B39964', '#e07798');
 
-if ($dw_current_theme == 'WallDark') {
+if ($dw_current_theme == 'DW WallDark') {
     $dw_colors = array('#DE3068','#ef4135', '#7cc576', '#B39964', '#2985e8');
 }
 
-if ($dw_current_theme == 'WallPin') {
+if ($dw_current_theme == 'DW WallPin') {
     $dw_colors = array('#CB2027','#2985e8', '#7cc576', '#B39964', '#e07798');
 }
 
-if ($dw_current_theme == 'WallChristmas') {
+if ($dw_current_theme == 'DW WallChristmas') {
     $dw_colors = array('#AE2F27','#2985e8', '#7cc576', '#B39964', '#e07798');
 }
 
@@ -94,7 +94,7 @@ class WP_Cats_Select_Control extends WP_Customize_Control {
 // Customize register
 // -----------------------------------------------------------------------------------
 function dw_wall_customize_register( $wp_customize ) {
-    global $dw_current_theme, $dw_colors;
+    global $dw_colors;
 
     // Site tile & Tagline
     // ---------------------------
@@ -251,7 +251,7 @@ function dw_wall_customize_register( $wp_customize ) {
     ));
 
     $wp_customize->add_control( new dw_wall_Textarea_Custom_Control($wp_customize, 'footer_code', array(
-        'label'    => __('Footer Code (Analytics, etc ...)', 'dw-wallpress'),
+        'label'    => __('Footer Code', 'dw-wallpress'),
         'section'  => 'dw_wall_custom_code',
         'settings' => 'dw_wall_theme_options[footer_code]'
     )));
@@ -291,7 +291,7 @@ function dw_wall_logo() {
     if($tagline)
     echo '<h2 id="site-description" class="sr-only">'.$tagline.'</h2>';
 }
-add_action( 'before-navigation', 'dw_wall_logo' );
+add_action( 'dw-wallpress-before-navigation', 'dw_wall_logo' );
 
 // Change Favicon
 // --------------------

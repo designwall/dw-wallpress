@@ -1,4 +1,9 @@
-<?php get_header(); ?>
+<?php
+/*
+Template Name: Fluid Width
+*/
+
+get_header(); ?>
 
 	<div id="container" class="clearfix">
 		

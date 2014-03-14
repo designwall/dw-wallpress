@@ -1,4 +1,9 @@
-<?php get_header(); ?>
+<?php
+/*
+Template Name: Sidebar Content
+*/
+
+get_header(); ?>
 
 	<?php get_sidebar(); ?>
 

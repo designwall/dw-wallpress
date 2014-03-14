@@ -26,7 +26,6 @@ if ( dw_wall_get_theme_option('cat_select') ) {
 			<div class="navigation">
 				<?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'dw-wallpress' ) ); ?>
 				<?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'dw-wallpress' ) ); ?>
-				<a href="#header" class="scroll-top"><?php _e( 'Top', 'dw-wallpress' ); ?></a>
 			</div>
 			<?php endif; ?>
 

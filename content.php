@@ -17,10 +17,10 @@
 						the_post_thumbnail('thumbnail');
 					endif;
 					?>
-				<?php if(has_post_format('video')) _e('<span class="video-play">Play</span>', 'dw-wallpress'); ?>
+				<?php if(has_post_format('video')) _e('<span class="video-play"><i class="fa fa-play"></i></span>', 'dw-wallpress'); ?>
 				</a>
 				<?php if(has_post_format('image')) : ?>
-				<a href="<?php echo wp_get_attachment_url( get_post_thumbnail_id() ); ?>" class="image-btn zoom" title="<?php printf( esc_attr__( '%s', 'dw-wallpress' ), the_title_attribute( 'echo=0' ) ); ?>" ><?php the_title(); ?></a>
+				<a href="<?php echo wp_get_attachment_url( get_post_thumbnail_id() ); ?>" rel="lightbox" class="image-btn zoom" title="<?php printf( esc_attr__( '%s', 'dw-wallpress' ), the_title_attribute( 'echo=0' ) ); ?>" ><i class="fa fa-arrows-alt"></i></a>
 				<?php endif; ?>
 			</div>
 			<?php endif; ?>
