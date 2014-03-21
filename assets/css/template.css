@@ -3022,9 +3022,8 @@ body.masonry-relayout.single .format-image.has-thumbnail .meta-bottom {
 #sidebar .widget_archive ul li a,
 #sidebar .widget_categories ul li a,
 #sidebar .widget_recent_entries ul li a {
-	display: inline-block;
-	padding: 2px 0;
-	max-width: 88px;
+	display: block;
+	padding: 1px 0;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
