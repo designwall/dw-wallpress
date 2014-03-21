@@ -48,8 +48,13 @@ Please post your questions in Questions & Answers page: http://www.designwall.co
 	+ assets/js/jquery.mousewheel.js
 
 == Changelog ==
-= 1.1.3 =
+= 1.1.5 =
+* Fix: Bugs in plugin activation
+
+= 1.1.4 =
 * Tweak: Restyle "scroll to top" button.
+
+= 1.1.3 =
 * Fix: Delay scroll in "short code" page.
 
 = 1.1.2 =

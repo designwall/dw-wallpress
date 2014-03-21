@@ -693,22 +693,37 @@ function alx_plugins() {
 		array(
 			'name' 				=> 'DW Question & Answer',
 			'slug' 				=> 'dw-question-answer',
+			'required'			=> false,
+			'force_activation' 	=> false,
+			'force_deactivation'=> false,
 		),
 		array(
 			'name' 				=> 'Contact Form 7',
 			'slug' 				=> 'contact-form-7',
+			'required'			=> false,
+			'force_activation' 	=> false,
+			'force_deactivation'=> false,
 		),
 		array(
 			'name' 				=> 'DW Shortcodes Bootstrap',
 			'slug' 				=> 'dw-shortcodes-bootstrap',
+			'required'			=> false,
+			'force_activation' 	=> false,
+			'force_deactivation'=> false,
 		),
 		array(
 			'name' 				=> 'Jigoshop',
 			'slug' 				=> 'jigoshop',
+			'required'			=> false,
+			'force_activation' 	=> false,
+			'force_deactivation'=> false,
 		),
 		array(
 			'name' 				=> 'WP Lightbox 2',
 			'slug' 				=> 'wp-lightbox-2',
+			'required'			=> false,
+			'force_activation' 	=> false,
+			'force_deactivation'=> false,
 		),
 	);	
 	tgmpa( $plugins );
