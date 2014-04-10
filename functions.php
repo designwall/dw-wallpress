@@ -248,7 +248,7 @@ function wallpress_post_class( $classes ) {
 		}
 
 		//Has new posts
-		if ( wallpress_is_new_post( $post->ID ) ) {
+		if ( wallpress_is_new_post( $post->ID ) && get_post_meta( $post->ID, 'ribbon', true ) == 'none' ) {
 			$classes[]="has-ribbon ribbon-new";
 		}
 	}
@@ -374,7 +374,7 @@ if ( ! function_exists( 'wallpress_meta_box' ) ) {
 				<tr>
 					<td width="33%">
 						<label>
-							<input type="radio" name="wallpress_post_ribbon_setting" value="" <?php if ($ribbon_value == '') echo 'checked="checked"' ?>>
+							<input type="radio" name="wallpress_post_ribbon_setting" value="none" <?php if ($ribbon_value == '') echo 'checked="checked"' ?>>
 							<span><?php _e('None','dw-wallpress') ?></span>
 						</label>
 					</td>
@@ -558,13 +558,13 @@ function wallpress_comment( $comment, $args, $depth ) {
 						echo get_avatar( $comment, $avatar_size );
 
 						/* translators: 1: comment author, 2: date and time */
-						printf( __( '%1$s %2$s', 'dw-wallpress' ),
+						printf( '%1$s %2$s',
 							sprintf( '<span class="fn">%s</span>', get_comment_author_link() ),
 							sprintf( '<a href="%1$s"><time pubdate datetime="%2$s">%3$s</time></a>',
 								esc_url( get_comment_link( $comment->comment_ID ) ),
 								get_comment_time( 'c' ),
 								/* translators: 1: date, 2: time */
-								sprintf( __( '%1$s %2$s', 'dw-wallpress' ), get_comment_date(), get_comment_time() )
+								sprintf( '%1$s %2$s', get_comment_date(), get_comment_time() )
 							)
 						); ?>
 					</div><!-- .comment-author .vcard -->

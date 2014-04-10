@@ -24,7 +24,7 @@
 	<?php endif; // end sidebar widget area ?>
 		<div id="copyright">
 			<?php do_action( 'wallpress_credits' ); ?>
-			<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'dw-wallpress' ) ); ?>" title="<?php esc_attr_e( 'Semantic Personal Publishing Platform', 'dw-wallpress' ); ?>"><?php printf( __( 'Proudly powered by %s', 'dw-wallpress' ), 'WordPress' ); ?></a>
+			<a href="<?php echo esc_url( 'http://wordpress.org/' ); ?>" title="<?php esc_attr_e( 'Semantic Personal Publishing Platform', 'dw-wallpress' ); ?>"><?php printf( __( 'Proudly powered by %s', 'dw-wallpress' ), 'WordPress' ); ?></a>
 		</div>
 	</div>
 </div><!-- #sidebar .widget-area -->

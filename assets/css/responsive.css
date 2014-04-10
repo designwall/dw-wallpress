@@ -267,12 +267,6 @@
 	.page-template-layout-content-sidebar-php #content {
 		width: 100%;
 	}
-
-	/* Scroll-top ---*/
-	.scroll-top {
-		bottom: 20px;
-		left: 20px;
-	}
 }
 
 /* The Mobile Landscape layout has maximum width = 719 pixel ---*/

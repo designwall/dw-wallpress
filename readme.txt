@@ -48,6 +48,13 @@ Please post your questions in Questions & Answers page: http://www.designwall.co
 	+ assets/js/jquery.mousewheel.js
 
 == Changelog ==
+= 1.1.7 =
+* Fix: Error in displaying sidebar shop
+
+= 1.1.6 =
+* New: Translation ready.
+* Fix: Ribbon bug in post setting.
+
 = 1.1.5 =
 * Fix: Bugs in plugin activation
 

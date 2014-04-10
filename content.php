@@ -17,7 +17,7 @@
 						the_post_thumbnail('thumbnail');
 					endif;
 					?>
-				<?php if(has_post_format('video')) _e('<span class="video-play"><i class="fa fa-play"></i></span>', 'dw-wallpress'); ?>
+				<?php if(has_post_format('video')) '<span class="video-play"><i class="fa fa-play"></i></span>'; ?>
 				</a>
 				<?php if(has_post_format('image')) : ?>
 				<a href="<?php echo wp_get_attachment_url( get_post_thumbnail_id() ); ?>" rel="lightbox" class="image-btn zoom" title="<?php printf( esc_attr__( '%s', 'dw-wallpress' ), the_title_attribute( 'echo=0' ) ); ?>" ><i class="fa fa-arrows-alt"></i></a>
