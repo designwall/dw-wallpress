@@ -279,7 +279,7 @@ function wallpress_pagenavi( $the_query ) {
 	$pages = '';
 	$max = $wp_query->max_num_pages;
 	if ( !$current = get_query_var( 'paged' ) ) $current = 1;
-	$a['base'] = ( $wp_rewrite->using_permalinks() ) ? user_trailingslashit( trailingslashit( remove_query_arg( 's', get_pagenum_link( 1 ) ) ) . 'page/%#%/', 'paged' ) : @add_query_arg( 'paged', '%#%' );
+	$a['base'] = ( $wp_rewrite->using_permalinks() ) ? user_trailingslashit( trailingslashit( esc_url( remove_query_arg( 's', get_pagenum_link( 1 ) ) ) ) . 'page/%#%/', 'paged' ) : @esc_url( add_query_arg( 'paged', '%#%' ) );
 	if ( !empty( $wp_query->query_vars['s'] ) ) $a['add_args'] = array( 's' => get_query_var( 's' ) );
 	$a['total'] = $max;
 	$a['current'] = $current;
@@ -684,48 +684,3 @@ if( !function_exists('dwqa_wallpress_scripts') ){
     add_action( 'wp_enqueue_scripts', 'dwqa_wallpress_scripts' );
 }
 
-/*-----------------------------------------------------------------------------------*/
-/* TGM plugin activation
-/*-----------------------------------------------------------------------------------*/
-require_once get_template_directory() . '/inc/class-tgm-plugin-activation.php';
-function alx_plugins() {
-	$plugins = array(
-		array(
-			'name' 				=> 'DW Question & Answer',
-			'slug' 				=> 'dw-question-answer',
-			'required'			=> false,
-			'force_activation' 	=> false,
-			'force_deactivation'=> false,
-		),
-		array(
-			'name' 				=> 'Contact Form 7',
-			'slug' 				=> 'contact-form-7',
-			'required'			=> false,
-			'force_activation' 	=> false,
-			'force_deactivation'=> false,
-		),
-		array(
-			'name' 				=> 'DW Shortcodes Bootstrap',
-			'slug' 				=> 'dw-shortcodes-bootstrap',
-			'required'			=> false,
-			'force_activation' 	=> false,
-			'force_deactivation'=> false,
-		),
-		array(
-			'name' 				=> 'Jigoshop',
-			'slug' 				=> 'jigoshop',
-			'required'			=> false,
-			'force_activation' 	=> false,
-			'force_deactivation'=> false,
-		),
-		array(
-			'name' 				=> 'WP Lightbox 2',
-			'slug' 				=> 'wp-lightbox-2',
-			'required'			=> false,
-			'force_activation' 	=> false,
-			'force_deactivation'=> false,
-		),
-	);	
-	tgmpa( $plugins );
-}
-add_action( 'tgmpa_register', 'alx_plugins' );
